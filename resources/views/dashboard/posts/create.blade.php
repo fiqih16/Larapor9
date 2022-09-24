@@ -32,7 +32,7 @@
 
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
-                <select class="form-select" name="category_id">
+                {{-- <select class="form-select" name="category_id">
                     @foreach ($categories as $category)
 
                     @if (old('category_id') == $category->id)
@@ -42,7 +42,7 @@
                     @endif
 
                     @endforeach
-                </select>
+                </select> --}}
             </div>
 
             <div class="mb-3">

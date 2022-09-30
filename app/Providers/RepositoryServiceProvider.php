@@ -12,8 +12,7 @@ class RepositoryServiceProvider extends ServiceProvider
         // You must place Interface in first place
         // If you dont, the Repository will not get readed.
         $this->app->bind(
-            'App\Repositories\User\UserRepository',
-            'App\Repositories\User\UserRepositoryImplement'
+            'App\Repositories\User\UserRepository'
         );
     }
 }

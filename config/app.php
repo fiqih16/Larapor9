@@ -196,7 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // Tambah repositoryserviceprovider
-        App\Providers\RepositoryServiceProvider::class,
+        // App\Providers\RepositoryServiceProvider::class,
 
     ],
 

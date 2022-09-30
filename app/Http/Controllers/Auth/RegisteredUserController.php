@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Services\User\UserService;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use App\Repositories\User\UserRepository;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,11 +15,11 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
-    private $userRepository;
+    private $userService;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserService $userService)
     {
-        $this->userRepository = $userRepository;
+        $this->userService = $userService;
     }
 
     /**

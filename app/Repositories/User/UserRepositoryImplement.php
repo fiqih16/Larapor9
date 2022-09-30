@@ -1,46 +1,46 @@
 <?php
 
-namespace App\Repositories\User;
+// namespace App\Repositories\User;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+// use App\Models\User;
+// use Illuminate\Support\Facades\Hash;
 
-class UserRepositoryImplement implements UserRepository
-{
-    public function getAll()
-    {
-        return User::all();
-    }
+// class UserRepositoryImplement implements UserRepository
+// {
 
-    public function getById($id)
-    {
-        return User::find($id);
-    }
+//     public function getAll()
+//     {
+//         return User::all();
+//     }
 
-    public function create($data)
-    {
-        $user = User::create([
-            'name' => $data->name,
-            'email' => $data->email,
-            'password' => Hash::make($data->password),
-        ]);
+//     public function getById($id)
+//     {
+//         return User::find($id);
+//     }
 
-        return $user;
-    }
+//     public function insert($data)
+//     {
+//         return User::create($data);
+//     }
 
-    public function update($id, $data)
-    {
-        $user = User::find($id);
-        $user->update($data);
-        return $user;
-    }
+//     public function FindByEmail($email)
+//     {
+//         return User::where('email', $email)->first();
+//     }
 
-    public function delete($id)
-    {
-        $user = User::find($id);
-        $user->delete();
-        return $user;
-    }
-}
+//     public function update($id, $data)
+//     {
+//         $user = User::find($id);
+//         $user->update($data);
+//         return $user;
+//     }
+
+//     public function delete($id)
+//     {
+//         $user = User::find($id);
+//         $user->delete();
+//         return $user;
+//     }
+// }
 
 ?>

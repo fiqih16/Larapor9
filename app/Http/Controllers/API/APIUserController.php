@@ -7,6 +7,9 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\User;
 use App\Services\User\UserService;
 use App\Http\Requests\User\UserProfileRequest;
+use Exception;
+use App\Http\Resources\ProfileUserResponse;
+
 
 
 class APIUserController extends BaseController
@@ -20,19 +23,12 @@ class APIUserController extends BaseController
 
     public function uploadAvatar(UserProfileRequest $request)
     {
-        $validate = $request->validated();
-
-        if($request->hasFile('avatar')){
-            $file = $request->file('avatar');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'img/profile', $name);
-            $validate['avatar'] = $name;
+        try {
+            $request->validated();
+            $user = $this->userService->saveAvatar($request);
+            return $this->sendResponse('Successfully Uploaded Avatar', 200, new ProfileUserResponse($user));
+        } catch (Exception $err) {
+            return $this->sendError('Fail', 422, $err->getMessage());
         }
-
-        $validate['id'] = $request->user()->id;
-        $user = $this->userService->saveAvatar($validate);
-        return $this->sendSuccess('Successfully Uploaded', 200, $user);
-
-
     }
 }

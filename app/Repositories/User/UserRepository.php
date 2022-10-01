@@ -15,9 +15,10 @@ class UserRepository
         $this->user = $user;
     }
 
-    public function insertUser($data)
+    public function insert(User $user)
     {
-        return $this->user->create($data);
+        $user->save();
+        return $user;
     }
 
     public function verifyCredentials($email, $password)

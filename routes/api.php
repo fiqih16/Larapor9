@@ -27,4 +27,5 @@ Route::get('users', [\App\Http\Controllers\API\AuthController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('user/profile', [APIUserController::class, 'uploadAvatar']);
+    Route::post('user/about', [APIUserController::class, 'aboutUser']);
 });

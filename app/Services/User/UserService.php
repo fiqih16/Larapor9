@@ -2,6 +2,7 @@
 
 namespace App\Services\User;
 
+use App\Http\Requests\User\AboutUserRequest;
 use App\Repositories\User\UserRepository;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -66,6 +67,20 @@ class UserService
             return $newAvatar;
         }
         return $user;
+    }
+
+    public function aboutUser(AboutUserRequest $request)
+    {
+        $user = $this->userRepository->FindById($request->user()->id);
+        $user->occupation = $request->occupation;
+        $user->about = $request->about;
+        $user->addres = $request->addres;
+        // jika occupation, about, addres ada isinya maka lakukan update
+        if ($user->occupation || $user->about || $user->addres) {
+            $this->userRepository->update($user);
+        }
+        $newAbout = $this->userRepository->Insert($user);
+        return $newAbout;
     }
 }
 

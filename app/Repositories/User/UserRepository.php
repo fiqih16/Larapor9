@@ -42,9 +42,10 @@ class UserRepository
         return $this->user->where('id', $id)->first();
     }
 
-    public function Update($id, $data)
+    public function update(User $user)
     {
-        return $this->user->where('id', $id)->update($data);
+        $user->update();
+        return $user;
     }
 
     // public function getAll();

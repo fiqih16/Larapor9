@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\APIUserController;
 use App\Http\Controllers\API\APICategoryController;
+use App\Http\Controllers\API\APISosmedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\API\APICategoryController;
 |
 */
 
+// Auth
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
@@ -27,7 +29,12 @@ Route::get('users', [\App\Http\Controllers\API\AuthController::class, 'index']);
 // });
 
 Route::middleware('auth:sanctum')->group(function () {
+    // Avatar Profile Route
     Route::post('user/profile', [APIUserController::class, 'uploadAvatar']);
+    // About Me
     Route::post('user/about', [APIUserController::class, 'aboutUser']);
+    // Category
     Route::post('category', [APICategoryController::class, 'store']);
+    // Sosmed
+    Route::post('sosmed', [APISosmedController::class, 'store']);
 });

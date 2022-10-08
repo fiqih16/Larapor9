@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\APIUserController;
 use App\Http\Controllers\API\APICategoryController;
+use App\Http\Controllers\API\APIPortofolioController;
 use App\Http\Controllers\API\APISosmedController;
 
 /*
@@ -37,4 +38,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('category', [APICategoryController::class, 'store']);
     // Sosmed
     Route::post('sosmed', [APISosmedController::class, 'store']);
+    // Portofolio
+    Route::post('portofolio', [APIPortofolioController::class, 'store']);
 });

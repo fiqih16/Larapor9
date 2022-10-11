@@ -25,7 +25,7 @@ class StorePortofolioRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'required',
+            'category_id' => 'required|string',
             'name' => 'required|string',
             'description' => 'required|string',
             'link' => 'required|string'

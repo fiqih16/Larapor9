@@ -20,19 +20,17 @@ class PortofolioService
 
     public function createPortofolio(StorePortofolioRequest $request)
     {
-        // $category = Category::findOrFail($request['category_id']);
-        // $category = Category::find();
         $portofolio = new Portofolio();
         $portofolio->category_id = $request->category_id;
         $portofolio->name = $request->name;
         $portofolio->description = $request->description;
         $portofolio->link = $request->link;
 
-        $portofolio->slug = Str::slug($request->name . '-' . Auth::user()->id);
+        // membuat slug dari nama portofolio, dan menambahkan random string di belakangnya
+        $portofolio->slug = Str::slug($request->name) . '-' . Str::random(5);
 
         $portofolio->user_id = Auth::user()->id;
-        // $result = $category->portofolio()->save($portofolio);
-        // return $result;
+
         return $this->portofolioRepository->insert($portofolio);
     }
 }

@@ -21,7 +21,7 @@ class APIPortofolioController extends BaseController
     public function store(StorePortofolioRequest $request)
     {
         try {
-            $request->validate();
+            $request->validated();
             $portofolio = $this->portofolioService->createPortofolio($request);
             return $this->sendResponse('Successfully Created Portofolio', 200, $portofolio);
         } catch (Exception $err) {

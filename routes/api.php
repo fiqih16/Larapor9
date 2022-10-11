@@ -40,4 +40,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('sosmed', [APISosmedController::class, 'store']);
     // Portofolio
     Route::post('portofolio', [APIPortofolioController::class, 'store']);
+    Route::post('portofolio/image', [APIPortofolioController::class, 'storeImage']);
 });

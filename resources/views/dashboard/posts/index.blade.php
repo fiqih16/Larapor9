@@ -23,8 +23,8 @@
             </tr>
           </thead>
           <tbody>
-              @foreach ($posts as $post)
-              <tr>
+              {{-- @foreach ($posts as $post) --}}
+              {{-- <tr>
                 <td>{{{$loop->iteration}}}</td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->category->name}}</td>
@@ -37,8 +37,8 @@
                         <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
                     </form>
                 </td>
-              </tr>
-              @endforeach
+              </tr> --}}
+              {{-- @endforeach --}}
           </tbody>
         </table>
       </div>

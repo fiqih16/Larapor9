@@ -19,20 +19,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard/posts', function () {
-    return view('dashboard.posts.index');
-});
-
-Route::get('/dashboard/posts/create', function () {
-    return view('dashboard.posts.create');
-});
-
-Route::get('/login', function () {
-    return view('login.index');
-});
-
-Route::get('/register', function () {
-    return view('register.index');
-});
+require __DIR__.'/auth.php';

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Portofolio;
 
+use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePortofolioRequest extends FormRequest
@@ -13,7 +14,7 @@ class StorePortofolioRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,12 @@ class StorePortofolioRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category_id' => 'required|string',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'link' => 'required|string'
         ];
+
+
     }
 }

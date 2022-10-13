@@ -4,7 +4,7 @@ namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class AboutUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'occupation' => 'string|max:40',
+            'about' => 'string',
+            'addres' => 'string|max:40',
         ];
     }
 }

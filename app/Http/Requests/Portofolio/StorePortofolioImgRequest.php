@@ -13,7 +13,7 @@ class StorePortofolioImgRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StorePortofolioImgRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'portofolio_id' => 'required',
+            'file_name' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

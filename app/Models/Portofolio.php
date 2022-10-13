@@ -9,7 +9,7 @@ class Portofolio extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     public function portofolio_image()
     {

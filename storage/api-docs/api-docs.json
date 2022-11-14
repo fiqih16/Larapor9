@@ -1,0 +1,229 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laraporto API",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "fiqih1666@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/profile": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Profile",
+                "operationId": "1c707b6f0bc6a8f0dfd4ca4d61ef797b",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "Access Token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "401"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "Access Token",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "401"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        },
+                                        "exception": {
+                                            "type": "string",
+                                            "example": "Illuminate\\\\Auth\\\\AuthenticationException"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login",
+                "description": "Login by email and password",
+                "operationId": "login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "LoginRequest": {
+                "title": "Login Request",
+                "description": "Login Request",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "email",
+                        "description": "email",
+                        "type": "string",
+                        "example": "fiqih1666@gmail.com"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password",
+                        "type": "string",
+                        "example": "useradmin"
+                    }
+                },
+                "type": "object"
+            },
+            "AuthResponse": {
+                "title": "AuthResponse",
+                "description": "AuthResponse model",
+                "properties": {
+                    "access_token": {
+                        "title": "access_token",
+                        "description": "access_token",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "AuthResponse"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "example": "fiqih"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email",
+                        "type": "string",
+                        "example": "fiqih1666@gmail.com"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password",
+                        "type": "string",
+                        "example": "password"
+                    },
+                    "created_at": {
+                        "title": "created_at",
+                        "description": "created_at",
+                        "type": "string",
+                        "example": "2021-05-01 00:00:00"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            }
+        }
+    }
+}

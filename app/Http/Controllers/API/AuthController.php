@@ -16,6 +16,30 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
+/**
+ * @OA\Post(
+ *  path="/api/register",
+ *  summary="Register",
+ *  tags={"Auth"},
+ *  @OA\Parameter(
+ *     name="access_token",
+ *     in="query",
+ *     description="Access Token",
+ *     required=true,
+ *  ),
+ * @OA\Response(
+ *  response=401,
+ *  description="Unauthenticated",
+ *  @OA\JsonContent(
+ *     @OA\Property(property="message", type="string", example="Unauthenticated"),
+ *     @OA\Property(property="status", type="integer", example="401"),
+ *     @OA\Property(property="data", type="string", example="Unauthenticated"),
+ *     @OA\Property(property="exception", type="string", example="Illuminate\\Auth\\AuthenticationException"),
+ *  )
+ * )
+ * )
+ */
+
 class AuthController extends BaseController
 {
     private $userService;
@@ -44,6 +68,32 @@ class AuthController extends BaseController
         return response()->json($data);
     }
 
+
+/**
+ * @OA\Post(
+ * path="/api/login",
+ * summary="Login",
+ * description="Login by email and password",
+ * operationId="login",
+ * tags={"Auth"},
+ * @OA\RequestBody(
+ *  required=true,
+ *  @OA\JsonContent(ref="#/components/schemas/LoginRequest")
+ * ),
+ * @OA\Response(
+ *  response=200,
+ *  description="Success",
+ *  @OA\JsonContent(ref="#/components/schemas/AuthResponse"),
+ *  @OA\Property(property="access_token", type="string", example="access_token")
+ * ),
+ * @OA\Response(
+ *  response=401,
+ *  description="Unauthenticated"
+ * )
+ *
+ * )
+ *
+ */
     public function login(LoginRequest $request)
     {
 

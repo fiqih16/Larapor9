@@ -9,8 +9,39 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
+
+/**
+ * @OA\Schema(
+ *  title="Login Request",
+ *  description="Login Request",
+ *  type="object",
+ *  required={"email", "password"}
+ * )
+ */
 class LoginRequest extends FormRequest
 {
+    /**
+     * @OA\Property(
+     *  title="email",
+     *  description="email",
+     *  example="fiqih1666@gmail.com"
+     * )
+     *
+     * @var string
+     */
+    public $email;
+
+    /** @OA\Property(
+     *  title="password",
+     *  description="password",
+     *  example="useradmin"
+     * )
+     *
+     * @var string
+     */
+    public $password;
+
+
     /**
      * Determine if the user is authorized to make this request.
      *

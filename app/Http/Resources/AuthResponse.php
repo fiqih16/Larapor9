@@ -4,8 +4,31 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+
+
+/**
+ * @OA\Schema(
+ *  title="AuthResponse",
+ *  description="AuthResponse model",
+ *  @OA\Xml(
+ *      name="AuthResponse"
+ *  )
+ * )
+ */
 class AuthResponse extends JsonResource
 {
+    /**
+     * @OA\Property(
+     *  title="access_token",
+     *  description="access_token",
+     * )
+     *
+     * @var \App\Models\User[]
+     */
+    private $access_token;
+
+
+
     // public $message;
     // public $status;
     // public $errors;

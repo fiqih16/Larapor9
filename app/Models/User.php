@@ -8,8 +8,73 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
+/**
+ * @OA\Schema(
+ *  title="User",
+ *  description="User model",
+ *  @OA\Xml(
+ *      name="User"
+ *  )
+ * )
+ */
 class User extends Authenticatable
 {
+    /**
+     * @OA\Property(
+     *  title="id",
+     *  description="id",
+     *  example="1"
+     * )
+     *
+     * @var integer
+     */
+    private $id;
+
+    /** @OA\Property(
+     *  title="name",
+     *  description="name",
+     *  example="fiqih"
+     * )
+     *
+     * @var string
+     */
+    public $name;
+
+    /**
+     * @OA\Property(
+     *  title="email",
+     * description="email",
+     * example="fiqih1666@gmail.com"
+     * )
+     *
+     * @var string
+     */
+    public $email;
+
+    /**
+     * @OA\Property(
+     *  title="password",
+     * description="password",
+     * example="password"
+     * )
+     *
+     * @var string
+     */
+    public $password;
+
+    /**
+     * @OA\Property(
+     *  title="created_at",
+     *  description="created_at",
+     *  example="2021-05-01 00:00:00"
+     * )
+     * @var string
+     */
+    private $created_at;
+
+
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

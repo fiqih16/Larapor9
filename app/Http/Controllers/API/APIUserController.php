@@ -11,8 +11,6 @@ use App\Http\Requests\User\UserProfileRequest;
 use Exception;
 use App\Http\Resources\ProfileUserResponse;
 
-
-
 class APIUserController extends BaseController
 {
     private $userService;
@@ -22,6 +20,31 @@ class APIUserController extends BaseController
         $this->userService = $userService;
     }
 
+    /**
+     * @OA\Post(
+     *  path="/api/profile",
+     *  summary="Profile",
+     *  tags={"User"},
+     *  @OA\Parameter(
+     *    name="access_token",
+     *    in="query",
+     *    description="Access Token",
+     *    required=true,
+     *    @OA\Schema(
+     *      type="string"
+     *    )
+     *  ),
+     * @OA\Response(
+     *  response=401,
+     *  description="Unauthenticated",
+     *  @OA\JsonContent(
+     *      @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *      @OA\Property(property="status", type="integer", example="401"),
+     *      @OA\Property(property="data", type="string", example="Unauthenticated"),
+     *  )
+     * )
+     * )
+     */
     public function uploadAvatar(UserProfileRequest $request)
     {
         try {
